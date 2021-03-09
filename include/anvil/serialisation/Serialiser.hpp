@@ -298,6 +298,9 @@ namespace anvil {
 			Serialiser::SetNextValueF64(value, count);
 		}
 	};
+
+
+	typedef Serialiser Deserialiser; //!< Deserialisation uses the same interface as serialisation
 }
 
 #endif
