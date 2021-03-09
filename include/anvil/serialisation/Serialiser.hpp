@@ -1,3 +1,5 @@
+// MIT License
+// 
 // Copyright(c) 2021 Adam Smith
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,6 +66,73 @@ namespace anvil {
 		virtual void EndObject() = 0;
 
 		virtual void SetNextMemberName(const char* name) = 0;
+
+		// Object name helpers
+	
+		inline void SetNextValueU8(const char* name, const uint8_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueU8(value);
+		}
+	
+		inline void SetNextValueU16(const char* name, const uint16_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueU16(value);
+		}
+	
+		inline void SetNextValueU32(const char* name, const uint32_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueU32(value);
+		}
+	
+		inline void SetNextValueU64(const char* name, const uint64_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueU64(value);
+		}
+	
+		inline void SetNextValueS8(const char* name, const int8_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueS8(value);
+		}
+	
+		inline void SetNextValueS16(const char* name, const int16_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueS16(value);
+		}
+	
+		inline void SetNextValueS32(const char* name, const int32_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueS32(value);
+		}
+	
+		inline void SetNextValueS64(const char* name, const int64_t value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueS64(value);
+		}
+	
+		inline void SetNextValueF32(const char* name, const float value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueF32(value);
+		}
+	
+		inline void SetNextValueF64(const char* name, const double value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueF64(value);
+		}
+	
+		inline void SetNextValueString(const char* name, const char* value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValueString(value);
+		}
+	
+		inline void StartArray(const char* name) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::StartArray();
+		}
+	
+		inline void StartObject(const char* name) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::StartArray();
+		}
 	};
 }
 
