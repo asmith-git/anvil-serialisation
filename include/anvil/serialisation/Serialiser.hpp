@@ -175,6 +175,128 @@ namespace anvil {
 		virtual void SetNextValueF64(const double* value, const size_t count) {
 			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueF64(value[i]);
 		}
+
+		// Template helpers
+
+		template<class T>
+		inline void SetNextValue(T value);
+
+		template<class T>
+		inline void SetNextValue(const T* value, const uint32_t count);
+
+		template<class T>
+		inline void SetNextValue(const char* name, T value) {
+			Serialiser::SetNextMemberName(name);
+			Serialiser::SetNextValue<T>(value);
+		}
+
+		template<class T>
+		inline void SetNextValue(const char* name, const T* value, const uint32_t count) {
+			// A named array is a special case so we will also call EndArray
+			Serialiser::StartArray(name);
+			Serialiser::SetNextValue<T>(value, count);
+			Serialiser::EndArray();
+		}
+
+		template<>
+		inline void SetNextValue<uint8_t>(uint8_t value) {
+			Serialiser::SetNextValueU8(value);
+		}
+
+		template<>
+		inline void SetNextValue<uint8_t>(const uint8_t* value, const uint32_t count) {
+			Serialiser::SetNextValueU8(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<uint16_t>(uint16_t value) {
+			Serialiser::SetNextValueU16(value);
+		}
+
+		template<>
+		inline void SetNextValue<uint16_t>(const uint16_t* value, const uint32_t count) {
+			Serialiser::SetNextValueU16(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<uint32_t>(uint32_t value) {
+			Serialiser::SetNextValueU32(value);
+		}
+
+		template<>
+		inline void SetNextValue<uint32_t>(const uint32_t* value, const uint32_t count) {
+			Serialiser::SetNextValueU32(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<uint64_t>(uint64_t value) {
+			Serialiser::SetNextValueU64(value);
+		}
+
+		template<>
+		inline void SetNextValue<uint64_t>(const uint64_t* value, const uint32_t count) {
+			Serialiser::SetNextValueU64(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<int8_t>(int8_t value) {
+			Serialiser::SetNextValueS8(value);
+		}
+
+		template<>
+		inline void SetNextValue<int8_t>(const int8_t* value, const uint32_t count) {
+			Serialiser::SetNextValueS8(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<int16_t>(int16_t value) {
+			Serialiser::SetNextValueS16(value);
+		}
+
+		template<>
+		inline void SetNextValue<int16_t>(const int16_t* value, const uint32_t count) {
+			Serialiser::SetNextValueS16(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<int32_t>(int32_t value) {
+			Serialiser::SetNextValueS32(value);
+		}
+
+		template<>
+		inline void SetNextValue<int32_t>(const int32_t* value, const uint32_t count) {
+			Serialiser::SetNextValueS32(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<int64_t>(int64_t value) {
+			Serialiser::SetNextValueS64(value);
+		}
+
+		template<>
+		inline void SetNextValue<int64_t>(const int64_t* value, const uint32_t count) {
+			Serialiser::SetNextValueS64(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<float>(float value) {
+			Serialiser::SetNextValueF32(value);
+		}
+
+		template<>
+		inline void SetNextValue<float>(const float* value, const uint32_t count) {
+			Serialiser::SetNextValueF32(value, count);
+		}
+
+		template<>
+		inline void SetNextValue<double>(double value) {
+			Serialiser::SetNextValueF64(value);
+		}
+
+		template<>
+		inline void SetNextValue<double>(const double* value, const uint32_t count) {
+			Serialiser::SetNextValueF64(value, count);
+		}
 	};
 }
 
