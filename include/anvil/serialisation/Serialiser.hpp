@@ -133,6 +133,48 @@ namespace anvil {
 			Serialiser::SetNextMemberName(name);
 			Serialiser::StartArray();
 		}
+
+		// Array optimisations
+
+		virtual void SetNextValueU8(const uint8_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueU8(value[i]);
+		}
+
+		virtual void SetNextValueU16(const uint16_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueU16(value[i]);
+		}
+
+		virtual void SetNextValueU32(const uint32_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueU32(value[i]);
+		}
+
+		virtual void SetNextValueU64(const uint64_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueU64(value[i]);
+		}
+
+		virtual void SetNextValueS8(const int8_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueS8(value[i]);
+		}
+
+		virtual void SetNextValueS16(const int16_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueS16(value[i]);
+		}
+
+		virtual void SetNextValueS32(const int32_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueS32(value[i]);
+		}
+
+		virtual void SetNextValueS64(const int64_t* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueS64(value[i]);
+		}
+
+		virtual void SetNextValueF32(const float* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueF32(value[i]);
+		}
+
+		virtual void SetNextValueF64(const double* value, const size_t count) {
+			for (size_t i = 0; i < count; ++i) Serialiser::SetNextValueF64(value[i]);
+		}
 	};
 }
 
